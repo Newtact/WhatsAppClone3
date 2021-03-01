@@ -1,21 +1,54 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// In App.js in a new project
 
-export default function App() {
+import * as React from 'react';
+import { View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+
+import TopBarNavigation from './navigation/TopBarNavigation';
+
+
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator 
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#34B7F1',
+          shadowOpacity: 0,
+          elevation: 0,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: 'bold',
+      }}
+      >
+        <Stack.Screen 
+          name="TopBar" 
+          component={TopBarNavigation}
+          options={{
+            title: 'WhatsApp',
+            headerRight: () => (
+              <View 
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                width: 80,
+                paddingRight: 10,
+              }}
+              >
+                <Feather name="search" size={24} color="white" />
+                <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
+              </View>
+            )
+          }} 
+          />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

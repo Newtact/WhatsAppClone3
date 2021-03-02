@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Animated from 'react-native-reanimated';
 import { Feather } from '@expo/vector-icons';
+import ChatScreen from '../screens/Tabs/ChatScreen';
 
 
 function HomeScreen() {
@@ -59,7 +60,7 @@ export default function TopBarNavigation() {
                 tabBarLabel: () => null,
             }}
         />
-        <Tab.Screen name="Chats" component={HomeScreen} />
+        <Tab.Screen name="Chats" component={ChatScreen} />
         <Tab.Screen name="Status" component={SettingsScreen} />
         <Tab.Screen name="Calls" component={ProfileScreen} />
       </Tab.Navigator>

@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather, MaterialCommunityIcons,MaterialIcons } from '@expo/vector-icons';
 
 import TopBarNavigation from './navigation/TopBarNavigation';
 import ChatRoom from './screens/Tabs/ChatRoom';
@@ -43,7 +43,7 @@ function App() {
                 paddingRight: 10,
               }}
               >
-                <Feather name="search" size={24} color="white" />
+                <Feather name="search" size={24} color="white" />                
                 <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
               </View>
             )
@@ -52,22 +52,24 @@ function App() {
         <Stack.Screen 
           name="ChatRoom" 
           component={ChatRoom}
-          options={{
-            title: 'ChatRoom',
+          options={({ route }) => ({ title: route.params.name, 
+          
             headerRight: () => (
               <View 
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-around',
-                width: 80,
+                width: 140,
                 paddingRight: 10,
               }}
               >
-                <Feather name="search" size={24} color="white" />
+                <Feather name="video" size={24} color="white" />
+                <MaterialIcons name="call" size={24} color="white" />
                 <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
               </View>
             )
-          }} 
+          
+          })}
           />
       </Stack.Navigator>
     </NavigationContainer>

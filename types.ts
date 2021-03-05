@@ -7,11 +7,12 @@ export type User = {
 export type Message = {
     id: string,
     content: string,
-    createdAt: string
+    createdAt: string,
+    user: User
 }
 
 export type ChatRoom = {
     id: string,
-    users : [User],
+    users : User[],
     lastMessage: Message
 }
